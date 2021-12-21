@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,17 @@
 		72CB4256BEE97C276CAAA351 /* Pods_MovieNote_MovieNoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87486FA7C5C4970D7EBA351D /* Pods_MovieNote_MovieNoteUITests.framework */; };
 		D593272060837E8D0F4F8285 /* Pods_MovieNoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B59B20F3DD3561C3094727 /* Pods_MovieNoteTests.framework */; };
 		D5BA51302772056D00C70313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA512F2772056D00C70313 /* AppDelegate.swift */; };
-		D5BA51322772056D00C70313 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51312772056D00C70313 /* SceneDelegate.swift */; };
-		D5BA51342772056D00C70313 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51332772056D00C70313 /* ViewController.swift */; };
+		D5BA51342772056D00C70313 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51332772056D00C70313 /* SettingViewController.swift */; };
 		D5BA51372772056D00C70313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BA51352772056D00C70313 /* Main.storyboard */; };
 		D5BA51392772057000C70313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BA51382772057000C70313 /* Assets.xcassets */; };
 		D5BA513C2772057000C70313 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5BA513A2772057000C70313 /* LaunchScreen.storyboard */; };
 		D5BA51472772057000C70313 /* MovieNoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51462772057000C70313 /* MovieNoteTests.swift */; };
 		D5BA51522772057000C70313 /* MovieNoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51512772057000C70313 /* MovieNoteUITests.swift */; };
+		D5BA516427720DBC00C70313 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA516327720DBC00C70313 /* NoteViewController.swift */; };
+		D5BA516827720E8D00C70313 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA516727720E8D00C70313 /* NetworkModel.swift */; };
+		D5BA516A2772119F00C70313 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51692772119F00C70313 /* MainTabbarController.swift */; };
+		D5BA516C27721BDC00C70313 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BA516B27721BDB00C70313 /* Color.xcassets */; };
+		D5BA516E27721C8600C70313 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA516D27721C8600C70313 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +52,7 @@
 		B3B59B20F3DD3561C3094727 /* Pods_MovieNoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BA512C2772056D00C70313 /* MovieNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BA512F2772056D00C70313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5BA51312772056D00C70313 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D5BA51332772056D00C70313 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D5BA51332772056D00C70313 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D5BA51362772056D00C70313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5BA51382772057000C70313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5BA513B2772057000C70313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +63,11 @@
 		D5BA514D2772057000C70313 /* MovieNoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieNoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5BA51512772057000C70313 /* MovieNoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNoteUITests.swift; sourceTree = "<group>"; };
 		D5BA51532772057000C70313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5BA516327720DBC00C70313 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		D5BA516727720E8D00C70313 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		D5BA51692772119F00C70313 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		D5BA516B27721BDB00C70313 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		D5BA516D27721C8600C70313 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D7E5F05D68EF805A327C3F79 /* Pods_MovieNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,7 +119,6 @@
 				34BAEC95CABA6DEC0CBCD584 /* Pods-MovieNoteTests.debug.xcconfig */,
 				1AA4C69160031076296FF746 /* Pods-MovieNoteTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,11 +147,15 @@
 		D5BA512E2772056D00C70313 /* MovieNote */ = {
 			isa = PBXGroup;
 			children = (
+				D5BA516627720E3000C70313 /* ViewController */,
+				D5BA515F27720D5800C70313 /* View */,
+				D5BA516027720D6400C70313 /* ViewModel */,
+				D5BA516127720D7100C70313 /* Model */,
+				D5BA516227720D7700C70313 /* Utils */,
 				D5BA512F2772056D00C70313 /* AppDelegate.swift */,
-				D5BA51312772056D00C70313 /* SceneDelegate.swift */,
-				D5BA51332772056D00C70313 /* ViewController.swift */,
 				D5BA51352772056D00C70313 /* Main.storyboard */,
 				D5BA51382772057000C70313 /* Assets.xcassets */,
+				D5BA516B27721BDB00C70313 /* Color.xcassets */,
 				D5BA513A2772057000C70313 /* LaunchScreen.storyboard */,
 				D5BA513D2772057000C70313 /* Info.plist */,
 			);
@@ -167,6 +178,46 @@
 				D5BA51532772057000C70313 /* Info.plist */,
 			);
 			path = MovieNoteUITests;
+			sourceTree = "<group>";
+		};
+		D5BA515F27720D5800C70313 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D5BA516027720D6400C70313 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D5BA516127720D7100C70313 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5BA516227720D7700C70313 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D5BA516727720E8D00C70313 /* NetworkModel.swift */,
+				D5BA516D27721C8600C70313 /* Colors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D5BA516627720E3000C70313 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D5BA51332772056D00C70313 /* SettingViewController.swift */,
+				D5BA516327720DBC00C70313 /* NoteViewController.swift */,
+				D5BA51692772119F00C70313 /* MainTabbarController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5BA513C2772057000C70313 /* LaunchScreen.storyboard in Resources */,
+				D5BA516C27721BDC00C70313 /* Color.xcassets in Resources */,
 				D5BA51392772057000C70313 /* Assets.xcassets in Resources */,
 				D5BA51372772056D00C70313 /* Main.storyboard in Resources */,
 			);
@@ -407,9 +459,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5BA51342772056D00C70313 /* ViewController.swift in Sources */,
+				D5BA516427720DBC00C70313 /* NoteViewController.swift in Sources */,
+				D5BA516E27721C8600C70313 /* Colors.swift in Sources */,
+				D5BA51342772056D00C70313 /* SettingViewController.swift in Sources */,
+				D5BA516A2772119F00C70313 /* MainTabbarController.swift in Sources */,
 				D5BA51302772056D00C70313 /* AppDelegate.swift in Sources */,
-				D5BA51322772056D00C70313 /* SceneDelegate.swift in Sources */,
+				D5BA516827720E8D00C70313 /* NetworkModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
