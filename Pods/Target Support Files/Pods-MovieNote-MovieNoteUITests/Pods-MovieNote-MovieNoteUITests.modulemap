@@ -1,0 +1,6 @@
+framework module Pods_MovieNote_MovieNoteUITests {
+  umbrella header "Pods-MovieNote-MovieNoteUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

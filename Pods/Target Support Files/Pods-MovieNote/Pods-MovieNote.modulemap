@@ -1,0 +1,6 @@
+framework module Pods_MovieNote {
+  umbrella header "Pods-MovieNote-umbrella.h"
+
+  export *
+  module * { export * }
+}
