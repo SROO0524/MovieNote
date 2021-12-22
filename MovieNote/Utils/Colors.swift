@@ -10,4 +10,5 @@ import UIKit
 
 struct Colors {
     static let seletedColor = UIColor(named: "seletedColor")
+    static let mainCellColor = UIColor(named: "mainCellColor")
 }

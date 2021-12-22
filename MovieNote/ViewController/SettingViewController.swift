@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 장르 관리
 class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
