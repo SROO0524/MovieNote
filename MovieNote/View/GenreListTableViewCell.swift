@@ -58,6 +58,7 @@ class GenreListTableViewCell: UITableViewCell {
             movieTitle.snp.makeConstraints { make in
                 make.top.equalTo(self.snp.centerY).offset(5)
                 make.leading.equalTo(self).offset(20)
+                make.bottom.equalTo(self).inset(5)
             }
             
             viewDatetitle.snp.makeConstraints { make in

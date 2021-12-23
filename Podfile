@@ -12,6 +12,7 @@ pod 'SwiftyJSON'
 pod 'SnapKit'
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'RealmSwift'
 
   target 'MovieNoteTests' do
     inherit! :search_paths

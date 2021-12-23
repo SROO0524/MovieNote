@@ -6,17 +6,31 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 // 장르별 영화리스트 화면
 class GenreDetailViewController: UIViewController {
     
     let headerView = GenreHeaderView()
     let tableView = UITableView()
+    let sortBottomUpVC = SortBottomUpViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navSetLayout()
         setLayout()
+        headerView.sortBT.addTarget(self, action: #selector(sortBTClicked), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        sortBottomUpVC.lisetLabelObservable.bid
+        
+        sortBottomUpVC.lisetLabelObservable.bind(onNext: { [weak self] model in
+            self?.headerView.sortBT.setTitle(model, for: .normal)
+        }).disposed(by: sortBottomUpVC.disposeBag)
+
     }
     
     func navSetLayout() {
@@ -52,7 +66,8 @@ class GenreDetailViewController: UIViewController {
         }
         tableView.separatorInset.left = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 130
     }
     
     @objc func backBTEvent() {
@@ -62,7 +77,13 @@ class GenreDetailViewController: UIViewController {
     @objc func addNote() {
         print("영화기록추가")
     }
-
+    
+    @objc func sortBTClicked() {
+        print("영화순 정렬")
+                
+        sortBottomUpVC.modalPresentationStyle = .overCurrentContext
+        present(sortBottomUpVC, animated: true, completion: nil)
+    }
 }
 
 extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource {
