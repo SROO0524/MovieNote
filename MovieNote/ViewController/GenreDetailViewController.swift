@@ -67,7 +67,7 @@ class GenreDetailViewController: UIViewController {
         tableView.separatorInset.left = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 130
+        tableView.estimatedRowHeight = 130 * view.frame.width / 320
     }
     
     @objc func backBTEvent() {
@@ -76,6 +76,8 @@ class GenreDetailViewController: UIViewController {
     
     @objc func addNote() {
         print("영화기록추가")
+        let newNoteStep1VC = NewNoteStep1ViewController()
+        navigationController?.pushViewController(newNoteStep1VC, animated: false)
     }
     
     @objc func sortBTClicked() {
@@ -97,5 +99,8 @@ extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return listCell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let noteDetailVC = NoteDetailViewController()
+        navigationController?.pushViewController(noteDetailVC, animated: true)
+    }
 }

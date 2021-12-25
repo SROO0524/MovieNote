@@ -38,7 +38,7 @@ class NoteViewController: UIViewController {
         tableView.register(NoteListTableViewCell.self, forCellReuseIdentifier: "noteListTableViewCell")
         tableView.separatorInset.left = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.rowHeight = 80
+        tableView.rowHeight = 80 * view.frame.width / 320
     }
 }
 

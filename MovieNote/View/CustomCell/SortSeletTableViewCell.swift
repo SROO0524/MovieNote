@@ -34,7 +34,6 @@ class SortSeletTableViewCell: UITableViewCell {
     func setLayout() {
         backgroundColor = Colors.mainCellColor
         addSubview(sortTitle)
-        sortTitle.font = UIFont.systemFont(ofSize: 15)
         sortTitle.snp.makeConstraints { make in
             make.centerY.equalTo(self)
             make.leading.equalTo(self)
@@ -46,8 +45,6 @@ class SortSeletTableViewCell: UITableViewCell {
             make.centerY.equalTo(sortTitle)
             make.trailing.equalTo(self).inset(10)
         }
-        
-        
     }
 
 }

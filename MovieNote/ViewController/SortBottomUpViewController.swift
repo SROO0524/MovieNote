@@ -35,13 +35,14 @@ class SortBottomUpViewController: UIViewController {
         bottomView.layer.cornerRadius = 10
         bottomView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner , .layerMaxXMinYCorner)
         bottomView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view)
             make.height.equalTo(view.frame.height / 4)
         }
         
         bottomView.addSubview(sortTitleLabel)
         sortTitleLabel.text = "정렬 방식"
-        sortTitleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        sortTitleLabel.font = UIFont.boldSystemFont(ofSize: 20 * view.frame.width / 320)
         sortTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(bottomView).offset(20)
             make.leading.equalTo(bottomView).offset(20)
@@ -63,7 +64,7 @@ class SortBottomUpViewController: UIViewController {
         tableView.backgroundColor = Colors.mainCellColor
         tableView.separatorInset.left = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tableView.rowHeight = 30
+        tableView.rowHeight = 30 * view.frame.width / 320
     }
 }
 
@@ -76,6 +77,7 @@ extension SortBottomUpViewController: UITableViewDelegate,UITableViewDataSource 
         let listCell = tableView.dequeueReusableCell(withIdentifier: "SortSeletTableViewCell", for: indexPath) as!
             SortSeletTableViewCell
         listCell.sortTitle.text = listLabel[indexPath.row]
+        listCell.sortTitle.font = UIFont.systemFont(ofSize: 15 * view.frame.width / 320)
         return listCell
     }
     
