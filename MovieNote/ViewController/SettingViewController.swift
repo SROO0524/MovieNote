@@ -14,7 +14,7 @@ import RealmSwift
 class SettingViewController: UIViewController {
     
     let tableView = UITableView()
-    var genreList = ["로맨스","SF","판타지"]
+    var genreList : [String] = []
     let cellObservable = PublishSubject<UITableViewCell>()
     let disposeBag = DisposeBag()
     var cellIndexPath : Int?
@@ -37,6 +37,12 @@ class SettingViewController: UIViewController {
         )
         
         navigationController?.navigationBar.tintColor = .black
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        
     }
     
     
@@ -62,26 +68,26 @@ class SettingViewController: UIViewController {
         let defaultAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default) { action in
             print("확인")
             guard let genreText = alert.textFields?.first?.text else { return }
+//            self.genreList.append(genreText)
+            let content = Content(value:  ["genre": genreText, "switchState": false])
+            
+            if self.realm.objects(Genre.self).isEmpty == true {
+
+                // settingModel을 생성하고 저장
+                let settingModel = Genre()
+                settingModel.contents.append(content)
+
+                try! self.realm.write {
+                    self.realm.add(settingModel)
+                }
+            } else {
+                try! self.realm.write {
+                    let settingModel = self.realm.objects(Genre.self)
+                    settingModel.first?.contents.append(content)
+                }
+            }
             self.genreList.append(genreText)
-//            let content = Content(value:  ["genre": genreText, "switchState": false])
-//
-//            UserDefaults.standard.set([genreText:false], forKey: "switchState")
-//
-//            if self.realm.objects(SettingModel.self).isEmpty == true {
-//
-//                // settingModel을 생성하고 저장
-//                let settingModel = SettingModel()
-//                settingModel.contents.append(content)
-//
-//                try! self.realm.write {
-//                    self.realm.add(settingModel)
-//                }
-//            } else {
-//                try! self.realm.write {
-//                    let settingModel = self.realm.objects(SettingModel.self)
-//                    settingModel.first?.contents.append(content)
-//                }
-//            }
+            
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel) { action in
@@ -101,16 +107,16 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let settingModel = realm.objects(SettingModel.self)
-        return genreList.count
+        let settingModel = realm.objects(Genre.self)
+        return settingModel.first?.contents.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GenreSetTableViewCell", for: indexPath) as! GenreSetTableViewCell
-        let settingModel = realm.objects(SettingModel.self)
-//        cell.genreLabel.text = settingModel.first?.contents[indexPath.row].genre
-        cell.genreLabel.text = genreList[indexPath.row]
-        cell.switchBT.isOn = ((settingModel.first?.contents[indexPath.row].switchState) != nil)
+        let settingModel = realm.objects(Genre.self)
+        cell.genreLabel.text = settingModel.first?.contents[indexPath.row].name
+//        cell.genreLabel.text = genreList[indexPath.row]
+        cell.switchBT.isOn = ((settingModel.first?.contents[indexPath.row].state) != nil)
         cellIndexPath = cell.switchBT.tag
         cell.switchBT.addTarget(self, action: #selector(isOn(_:)), for: .touchUpInside)
         return cell
@@ -118,24 +124,43 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func isOn(_ sender: UISwitch) {
         let content = Content(value:  ["genre": "\(genreList[sender.tag])", "switchState": sender.isOn])
-        
-        UserDefaults.standard.set([genreList[sender.tag]:sender.isOn], forKey: "switchState")
-        
-        if realm.objects(SettingModel.self).isEmpty == true {
-            
-            // settingModel을 생성하고 저장
-            let settingModel = SettingModel()
-            settingModel.contents.append(content)
-            
-            try! realm.write {
-                realm.add(settingModel)
-            }
-        } else {
-            try! realm.write {
-                let settingModel = realm.objects(SettingModel.self)
-                settingModel.first?.contents.append(content)
-            }
+//        if realm.objects(SettingModel.self).isEmpty == true {
+//
+//            // settingModel을 생성하고 저장
+//            let settingModel = SettingModel()
+//            settingModel.contents.append(content)
+//
+//            try! realm.write {
+//                realm.add(settingModel)
+//            }
+//        } else {
+//            try! realm.write {
+//                let settingModel = realm.objects(SettingModel.self)
+//                realm.add(settingModel.first?.contents[sender.tag].switchState ?? sender.isOn, update: .modified)
+//
+//            }
+//        }
+
+//        try? realm.write {
+//              realm.add(data, update: .modified)
+//        }
+//
+//
+//        if let settingModel = realm.objects(Content.self).filter(NSPredicate(format: "genre == %ld", genreList[sender.tag])).first {
+//                try? realm.write {
+//                    settingModel.genre = genreList[sender.tag]
+//                    settingModel.switchState = sender.isOn
+//                }
+//            } else {
+//                print("genreList에 없는 genre 입니다.")
+//            }
+        let setArray = realm.objects(Genre.self)
+        print()
+        try! realm.write {
+            setArray.first?.contents[sender.tag].name =  content.name
+            setArray.first?.contents[sender.tag].state =  content.state
         }
+        
     }
     
 }
