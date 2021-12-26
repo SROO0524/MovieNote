@@ -11,8 +11,8 @@ import UIKit
 class GenreListTableViewCell: UITableViewCell {
 
     let likeImage = UIImageView()
-    let movieTitle = UILabel()
     let viewDatetitle = UILabel()
+    let movieTitle = UILabel()
     var likeCliked = false
     
     

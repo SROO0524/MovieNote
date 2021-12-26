@@ -21,7 +21,7 @@ class MoviewInfoView: UIView {
     let memoTitle = UILabel()
     let memoTextView = UITextView()
     
-    func setLayout() {
+    func setLayout(movie: Movie) {
         
         self.snp.makeConstraints { make in
             make.top.equalTo(superview!.safeAreaLayoutGuide).offset(10)
@@ -40,14 +40,14 @@ class MoviewInfoView: UIView {
         }
         
         containerView.addSubview(directorLabel)
-        directorLabel.text = "2. 감독 : 연상호"
+        directorLabel.text = "2. 감독 : \(movie.director)"
         directorLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
         directorLabel.snp.makeConstraints { make in
             make.center.equalTo(containerView)
         }
         
         containerView.addSubview(yearDateLabel)
-        yearDateLabel.text = "1. 개봉년도 : 2021년 10월 12일"
+        yearDateLabel.text = "1. 개봉년도 : \(movie.releaseDate)"
         yearDateLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
         yearDateLabel.snp.makeConstraints { make in
             make.centerX.equalTo(containerView)
@@ -55,7 +55,7 @@ class MoviewInfoView: UIView {
         }
         
         containerView.addSubview(actorLabel)
-        actorLabel.text = "3. 출현진: 김현주, 유아인"
+        actorLabel.text = "3. 출현진: \(movie.actor)"
         actorLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
         actorLabel.snp.makeConstraints { make in
             make.top.equalTo(directorLabel.snp.bottom).offset(10)
@@ -73,7 +73,10 @@ class MoviewInfoView: UIView {
         
         
         addSubview(dateLabel)
-        dateLabel.text = "2021.10.12"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: movie.watchedAt)
+        dateLabel.text = dateString
         dateLabel.font = UIFont.systemFont(ofSize: 10 * superview!.frame.height / 568)
         dateLabel.textColor = .gray
         dateLabel.snp.makeConstraints { make in
@@ -95,6 +98,7 @@ class MoviewInfoView: UIView {
         memoTextView.layer.borderColor = Colors.mainCellColor?.cgColor
         memoTextView.layer.borderWidth = 1
         memoTextView.isEditable = true
+        memoTextView.text = movie.memo
         memoTextView.snp.makeConstraints { make in
             make.top.equalTo(memoTitle.snp.bottom).offset(10 * superview!.frame.height / 568)
             make.leading.trailing.equalTo(containerView)

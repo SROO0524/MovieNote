@@ -18,6 +18,7 @@ class GenreDetailViewController: UIViewController {
     let sortBottomUpVC = SortBottomUpViewController()
     let noteVC = NoteViewController()
     let realm = try! Realm()
+    var genre: Genre? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class GenreDetailViewController: UIViewController {
             self?.headerView.sortBT.setTitle(model, for: .normal)
         }).disposed(by: sortBottomUpVC.disposeBag)
         
-        navigationItem.title = Commmon.navTitleName
+        navigationItem.title = genre!.name
     }
     
     
@@ -80,6 +81,7 @@ class GenreDetailViewController: UIViewController {
     @objc func addNote() {
         print("영화기록추가")
         let newNoteStep1VC = NewNoteStep1ViewController()
+        newNoteStep1VC.genre = self.genre
         navigationController?.pushViewController(newNoteStep1VC, animated: false)
     }
     
@@ -93,17 +95,18 @@ class GenreDetailViewController: UIViewController {
 
 extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return genre?.movies.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: "GenreListTableViewCell", for: indexPath) as! GenreListTableViewCell
-        
+        listCell.movieTitle.text = genre?.movies[indexPath.row].title
         return listCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let noteDetailVC = NoteDetailViewController()
+        noteDetailVC.movie = genre?.movies[indexPath.row]
         navigationController?.pushViewController(noteDetailVC, animated: true)
     }
 }

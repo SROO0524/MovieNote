@@ -15,6 +15,7 @@ class NoteDetailViewController: UIViewController {
     let likedImage = UIImage(named: "suit.heart.fill")
     let tableView = UITableView()
     let movieInfoView = MoviewInfoView()
+    var movie: Movie? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,12 @@ class NoteDetailViewController: UIViewController {
         navSetLayout()
 //        setTableView()
         view.addSubview(movieInfoView)
-        movieInfoView.setLayout()
+        movieInfoView.setLayout(movie: movie!)
     }
     
     func navSetLayout() {
         navigationItem.largeTitleDisplayMode =  .never
-        navigationItem.title = "영화 제목"
+        navigationItem.title = movie!.title
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "chevron.backward"),

@@ -29,8 +29,6 @@ class NoteViewController: UIViewController {
         setLayout()
         tableView.delegate = self
         tableView.dataSource = self
-        let searchapi = SearchAPI()
-        searchapi.search(query: "어벤져스")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,10 +69,9 @@ extension NoteViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let genreName = gernes[indexPath.row].name
-        Commmon.navTitleName = genreName
-        
+        let genre = gernes[indexPath.row]
         let genreDetailVC = GenreDetailViewController()
+        genreDetailVC.genre = genre
         navigationController?.pushViewController(genreDetailVC, animated: false)
     }
     
