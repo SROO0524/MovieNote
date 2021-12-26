@@ -9,17 +9,13 @@ import Foundation
 import RealmSwift
 
 class Genre: Object {
-    var contents = List<Content>()
-}
-
-class Content: Object {
-    @objc dynamic var name  = UUID().uuidString
+    @objc dynamic var id  = 0
+    @objc dynamic var name  = ""
     @objc dynamic var state : Bool = false
+    let movies = List<Movie>()
+    
     
     override static func primaryKey() -> String? {
-        
-        return "genre"
-      }
-    
-    
+        return "id"
+    }
 }

@@ -14,7 +14,6 @@ import RealmSwift
 class SettingViewController: UIViewController {
     
     let tableView = UITableView()
-    var genreList : [String] = []
     let cellObservable = PublishSubject<UITableViewCell>()
     let disposeBag = DisposeBag()
     var cellIndexPath : Int?
@@ -24,6 +23,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("😀realmURL\(Realm.Configuration.defaultConfiguration.fileURL)")
         setTableView()
 //        view.addSubview(switchBT)
 //        switchBT.snp.makeConstraints { make in
@@ -45,8 +45,6 @@ class SettingViewController: UIViewController {
         
     }
     
-    
-    
     func setTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
@@ -66,30 +64,22 @@ class SettingViewController: UIViewController {
 
         // 메시지 창 컨트롤러에 들어갈 버튼 액션 객체 생성
         let defaultAction =  UIAlertAction(title: "확인", style: UIAlertAction.Style.default) { action in
-            print("확인")
-            guard let genreText = alert.textFields?.first?.text else { return }
-//            self.genreList.append(genreText)
-            let content = Content(value:  ["genre": genreText, "switchState": false])
-            
-            if self.realm.objects(Genre.self).isEmpty == true {
-
-                // settingModel을 생성하고 저장
-                let settingModel = Genre()
-                settingModel.contents.append(content)
-
-                try! self.realm.write {
-                    self.realm.add(settingModel)
-                }
-            } else {
-                try! self.realm.write {
-                    let settingModel = self.realm.objects(Genre.self)
-                    settingModel.first?.contents.append(content)
-                }
+            guard let name = alert.textFields?.first?.text else { return }
+            let duplicated = self.realm.objects(Genre.self).filter("name == %@", name)
+            if duplicated.count > 0 {
+                return
             }
-            self.genreList.append(genreText)
             
+            let genre = Genre()
+            genre.name = name
+            genre.id = self.realm.objects(Genre.self).count
+            
+            try! self.realm.write {
+                self.realm.add(genre)
+            }
             self.tableView.reloadData()
         }
+        
         let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel) { action in
             self.dismiss(animated: true, completion: nil)
         }
@@ -107,60 +97,28 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let settingModel = realm.objects(Genre.self)
-        return settingModel.first?.contents.count ?? 0
+        // genre의 스위치 값이 true 인 갯수 => array에 담기
+        let genres = realm.objects(Genre.self)
+        return genres.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GenreSetTableViewCell", for: indexPath) as! GenreSetTableViewCell
-        let settingModel = realm.objects(Genre.self)
-        cell.genreLabel.text = settingModel.first?.contents[indexPath.row].name
-//        cell.genreLabel.text = genreList[indexPath.row]
-        cell.switchBT.isOn = ((settingModel.first?.contents[indexPath.row].state) != nil)
-        cellIndexPath = cell.switchBT.tag
+        let genres = realm.objects(Genre.self)
+        cell.genreLabel.text = genres[indexPath.row].name
+        cell.switchBT.isOn = genres[indexPath.row].state
+        cell.switchBT.tag = genres[indexPath.row].id
         cell.switchBT.addTarget(self, action: #selector(isOn(_:)), for: .touchUpInside)
         return cell
     }
     
     @objc func isOn(_ sender: UISwitch) {
-        let content = Content(value:  ["genre": "\(genreList[sender.tag])", "switchState": sender.isOn])
-//        if realm.objects(SettingModel.self).isEmpty == true {
-//
-//            // settingModel을 생성하고 저장
-//            let settingModel = SettingModel()
-//            settingModel.contents.append(content)
-//
-//            try! realm.write {
-//                realm.add(settingModel)
-//            }
-//        } else {
-//            try! realm.write {
-//                let settingModel = realm.objects(SettingModel.self)
-//                realm.add(settingModel.first?.contents[sender.tag].switchState ?? sender.isOn, update: .modified)
-//
-//            }
-//        }
-
-//        try? realm.write {
-//              realm.add(data, update: .modified)
-//        }
-//
-//
-//        if let settingModel = realm.objects(Content.self).filter(NSPredicate(format: "genre == %ld", genreList[sender.tag])).first {
-//                try? realm.write {
-//                    settingModel.genre = genreList[sender.tag]
-//                    settingModel.switchState = sender.isOn
-//                }
-//            } else {
-//                print("genreList에 없는 genre 입니다.")
-//            }
-        let setArray = realm.objects(Genre.self)
-        print()
+        let index = sender.tag
+        let genre = realm.objects(Genre.self).filter("id = %@", index)
+        print("index: \(index)")
         try! realm.write {
-            setArray.first?.contents[sender.tag].name =  content.name
-            setArray.first?.contents[sender.tag].state =  content.state
+            guard let first = genre.first else {return}
+            first.state = !first.state
         }
-        
     }
-    
 }

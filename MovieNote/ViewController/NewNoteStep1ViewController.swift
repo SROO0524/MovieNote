@@ -26,9 +26,14 @@ class NewNoteStep1ViewController: UIViewController {
         setTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.title = Commmon.navTitleName
+    }
+    
     func navSetLayout() {
         navigationItem.largeTitleDisplayMode =  .never
-        navigationItem.title = "로맨스"
+        
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "chevron.backward"),

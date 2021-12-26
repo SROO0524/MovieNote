@@ -7,12 +7,15 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class NetWorkModel {
 
     let baseURL = "https://openapi.naver.com/v1/search/movie.json"
-    let clientID = "CL8FxWqGckBm4isPxeSE"
-    let clientSecret = "9_Q_ftV4oi"
+    var headers : HTTPHeaders = [
+        "X-Naver-Client-Id": "CL8FxWqGckBm4isPxeSE",
+        "X-Naver-Client-Secret": "9_Q_ftV4oi"
+    ]
 
 }
 

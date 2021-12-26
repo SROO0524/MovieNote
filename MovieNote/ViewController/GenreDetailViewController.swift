@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RealmSwift
 
 // 장르별 영화리스트 화면
 class GenreDetailViewController: UIViewController {
@@ -15,6 +16,8 @@ class GenreDetailViewController: UIViewController {
     let headerView = GenreHeaderView()
     let tableView = UITableView()
     let sortBottomUpVC = SortBottomUpViewController()
+    let noteVC = NoteViewController()
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +28,17 @@ class GenreDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        sortBottomUpVC.lisetLabelObservable.bid
         
         sortBottomUpVC.lisetLabelObservable.bind(onNext: { [weak self] model in
             self?.headerView.sortBT.setTitle(model, for: .normal)
         }).disposed(by: sortBottomUpVC.disposeBag)
-
+        
+        navigationItem.title = Commmon.navTitleName
     }
+    
     
     func navSetLayout() {
         navigationItem.largeTitleDisplayMode =  .never
-        navigationItem.title = "로맨스"
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "chevron.backward"),
