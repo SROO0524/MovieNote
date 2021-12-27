@@ -137,7 +137,7 @@ extension NewNoteStep1ViewController: UITableViewDelegate, UITableViewDataSource
         let cellData = searchViewModel.getDetailsData(index: indexPath.row)
         cell.movieTitle.font = UIFont.systemFont(ofSize: 15 * view.frame.width / 320)
         cell.releasRateLabel.font = UIFont.systemFont(ofSize: 15 * view.frame.width / 320)
-        let titleResult = cellData.title?.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
+        let titleResult = Commmon.formateStringData(string: cellData.title ?? "")
         cell.movieTitle.text = titleResult
         cell.releasRateLabel.text = "\(cellData.pubDate ?? "")년 ,\(cellData.userRating ?? "")점"
         return cell

@@ -19,6 +19,7 @@ class GenreDetailViewController: UIViewController {
     let noteVC = NoteViewController()
     let realm = try! Realm()
     var genre: Genre? = nil
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class GenreDetailViewController: UIViewController {
         }).disposed(by: sortBottomUpVC.disposeBag)
         
         navigationItem.title = genre!.name
+        movies = Array(genre!.movies)
+        
+        tableView.reloadData()
+        
     }
     
     
@@ -95,12 +100,23 @@ class GenreDetailViewController: UIViewController {
 
 extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genre?.movies.count ?? 0
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let listCell = tableView.dequeueReusableCell(withIdentifier: "GenreListTableViewCell", for: indexPath) as! GenreListTableViewCell
-        listCell.movieTitle.text = genre?.movies[indexPath.row].title
+        listCell.setLayout(likeClicked: movies[indexPath.row].like)
+        if movies[indexPath.row].like == false {
+            listCell.likeImage.tintColor = .gray
+        } else {
+            listCell.likeImage.tintColor = .red
+        }
+        
+        let titleResult = Commmon.formateStringData(string: movies[indexPath.row].title)
+        listCell.movieTitle.text = titleResult
+        let watchAtString = Commmon.getDateString(date: movies[indexPath.row].watchedAt)
+        let watchDate = "\(watchAtString) >"
+        listCell.viewDatetitle.text = watchDate
         return listCell
     }
     
@@ -109,4 +125,6 @@ extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource 
         noteDetailVC.movie = genre?.movies[indexPath.row]
         navigationController?.pushViewController(noteDetailVC, animated: true)
     }
+    
+    
 }

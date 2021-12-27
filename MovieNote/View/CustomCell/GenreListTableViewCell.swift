@@ -13,19 +13,18 @@ class GenreListTableViewCell: UITableViewCell {
     let likeImage = UIImageView()
     let viewDatetitle = UILabel()
     let movieTitle = UILabel()
-    var likeCliked = false
-    
+//    var likeCliked = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setLayout()
+//        setLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setLayout() {
+    func setLayout(likeClicked: Bool) {
         addSubview(likeImage)
         likeImage.image = UIImage(named: "suit.heart.fill")
         likeImage.tintColor = .red
@@ -36,20 +35,7 @@ class GenreListTableViewCell: UITableViewCell {
         
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.black.cgColor
-        
-        if likeCliked == false {
-            likeImage.isHidden = true
-            
-            movieTitle.snp.makeConstraints { make in
-                make.centerY.equalTo(self)
-                make.leading.equalTo(self).offset(20)
-            }
-            
-            viewDatetitle.snp.makeConstraints { make in
-                make.centerY.equalTo(movieTitle)
-                make.trailing.equalTo(self).inset(20)
-            }
-        } else {
+
             likeImage.snp.makeConstraints { make in
                 make.leading.equalTo(self).offset(20)
                 make.bottom.equalTo(self.snp.centerY).inset(5)
@@ -66,6 +52,6 @@ class GenreListTableViewCell: UITableViewCell {
                 make.trailing.equalTo(self).inset(20)
             }
             
-        }
+        
     }
 }

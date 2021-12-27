@@ -41,8 +41,7 @@ class MainTabbarController: UITabBarController {
                 createNavController(for: NoteViewController(), title: NSLocalizedString("나의 영화 노트", comment: ""), image: UIImage(named: "note.text")!),
                 createNavController(for: SettingViewController(), title: NSLocalizedString("장르 관리", comment: ""), image: UIImage(named: "gearshape.fill")!)
             ]
- // sfSymbol에 tint 컬러 입히는 작업 
-//        UITabBar.appearance().tintColor = Colors.seletedColor
+
     }
 }
 

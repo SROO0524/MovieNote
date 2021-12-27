@@ -44,6 +44,7 @@
 		D5BA51A227788C3500C70313 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A127788C3500C70313 /* SearchAPI.swift */; };
 		D5BA51A427789EEF00C70313 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A327789EEF00C70313 /* SearchViewModel.swift */; };
 		D5BA51A62778C6B000C70313 /* MovieStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A52778C6B000C70313 /* MovieStruct.swift */; };
+		D5BA51A8277950DA00C70313 /* DataEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A7277950DA00C70313 /* DataEmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		D5BA51A127788C3500C70313 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		D5BA51A327789EEF00C70313 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D5BA51A52778C6B000C70313 /* MovieStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStruct.swift; sourceTree = "<group>"; };
+		D5BA51A7277950DA00C70313 /* DataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEmptyView.swift; sourceTree = "<group>"; };
 		D7E5F05D68EF805A327C3F79 /* Pods_MovieNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 				D5BA518E2776D6B000C70313 /* SearchHeaderView.swift */,
 				D5BA518A2776C82400C70313 /* MoviewInfoView.swift */,
 				D5BA517727736EC200C70313 /* GenreHeaderView.swift */,
+				D5BA51A7277950DA00C70313 /* DataEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				D5BA51A62778C6B000C70313 /* MovieStruct.swift in Sources */,
 				D5BA51932776FB3200C70313 /* NewNoteStep2ViewController.swift in Sources */,
 				D5BA518F2776D6B000C70313 /* SearchHeaderView.swift in Sources */,
+				D5BA51A8277950DA00C70313 /* DataEmptyView.swift in Sources */,
 				D5BA51722773500D00C70313 /* NoteListView.swift in Sources */,
 				D5BA51342772056D00C70313 /* SettingViewController.swift in Sources */,
 				D5BA516A2772119F00C70313 /* MainTabbarController.swift in Sources */,

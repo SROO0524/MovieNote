@@ -67,7 +67,7 @@ class NewNoteStep2View: UIView {
         
         addSubview(confirmBT)
         confirmBT.setTitle("다음", for: .normal)
-        confirmBT.backgroundColor = Colors.mainCellColor
+        confirmBT.backgroundColor = Colors.seletedColor
         confirmBT.setTitleColor(.white, for: .normal)
         confirmBT.layer.cornerRadius = 5
         confirmBT.clipsToBounds = true

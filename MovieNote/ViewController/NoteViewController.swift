@@ -13,28 +13,33 @@ import RxCocoa
 // 나의 영화 기록
 class NoteViewController: UIViewController {
 
-//    let noteTableView = NoteListView()
     let exampleGenre = ["로맨스","액션","스릴러"]
     let tableView = UITableView()
     var gernes : [Genre] = []
     let realm = try! Realm()
     let genreObservable = PublishSubject<String>()
     let disposeBag = DisposeBag()
+    let emptyView = DataEmptyView()
+    let genreDetailVC = GenreDetailViewController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode =  .always
-        setLayout()
+        setTableview()
         tableView.delegate = self
         tableView.dataSource = self
+        view.addSubview(emptyView)
+    
+        NotificationCenter.default.addObserver(self as Any,
+                                               selector: #selector(pushDetailVC),
+                                               name: NSNotification.Name("PushDetailVC"),
+                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        Commmon.navTitleName = ""
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode =  .always
@@ -43,7 +48,7 @@ class NoteViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func setLayout() {
+    func setTableview() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -52,6 +57,10 @@ class NoteViewController: UIViewController {
         tableView.separatorInset.left = 0
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.rowHeight = 80 * view.frame.width / 320
+    }
+    
+    @objc func pushDetailVC() {
+        navigationController?.pushViewController(genreDetailVC, animated: true)
     }
 }
 
@@ -70,7 +79,6 @@ extension NoteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let genre = gernes[indexPath.row]
-        let genreDetailVC = GenreDetailViewController()
         genreDetailVC.genre = genre
         navigationController?.pushViewController(genreDetailVC, animated: false)
     }

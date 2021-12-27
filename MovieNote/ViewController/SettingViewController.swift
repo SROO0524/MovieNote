@@ -97,7 +97,6 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // genre의 스위치 값이 true 인 갯수 => array에 담기
         let genres = realm.objects(Genre.self)
         return genres.count
     }

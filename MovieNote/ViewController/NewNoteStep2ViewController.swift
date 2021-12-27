@@ -59,17 +59,15 @@ class NewNoteStep2ViewController: UIViewController, UITextViewDelegate {
         movie.director = selectedMovie.director
         movie.releaseDate = selectedMovie.releaseDate
         movie.memo = memo
-        movie.gerne = genre
-//        genre.id = self.realm.objects(Genre.self).count
         
         try! self.realm.write {
             self.realm.add(movie)
             genre?.movies.append(movie)
         }
         
-        let genreDetailVC = GenreDetailViewController()
-        navigationController?.popToRootViewController(animated: true)
-//        Commmon.popToRoot(param: genreDetailVC, completion: nil)
+        Commmon.popToRoot(param: self.navigationController, completion: {
+            NotificationCenter.default.post(name: NSNotification.Name("PushDetailVC"),object: nil)
+        })
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

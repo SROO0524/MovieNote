@@ -73,9 +73,7 @@ class MoviewInfoView: UIView {
         
         
         addSubview(dateLabel)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: movie.watchedAt)
+        let dateString = Commmon.getDateString(date: movie.watchedAt)
         dateLabel.text = dateString
         dateLabel.font = UIFont.systemFont(ofSize: 10 * superview!.frame.height / 568)
         dateLabel.textColor = .gray
