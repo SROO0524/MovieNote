@@ -26,6 +26,4 @@ class GenreHeaderView: UIView {
             make.leading.equalTo(self.snp.leading).offset(10)
         }
     }
-    
-    
 }

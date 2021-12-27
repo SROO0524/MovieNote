@@ -13,36 +13,28 @@ import RxCocoa
 // 나의 영화 기록
 class NoteViewController: UIViewController {
 
-    let exampleGenre = ["로맨스","액션","스릴러"]
     let tableView = UITableView()
     var gernes : [Genre] = []
     let realm = try! Realm()
     let genreObservable = PublishSubject<String>()
     let disposeBag = DisposeBag()
     let emptyView = DataEmptyView()
-    let genreDetailVC = GenreDetailViewController()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode =  .always
+        navigationItem.largeTitleDisplayMode = .always
         setTableview()
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(emptyView)
     
-        NotificationCenter.default.addObserver(self as Any,
-                                               selector: #selector(pushDetailVC),
-                                               name: NSNotification.Name("PushDetailVC"),
-                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode =  .always
+        navigationItem.largeTitleDisplayMode = .always
         tabBarController?.tabBar.isHidden = false
         gernes = Array(realm.objects(Genre.self).filter("state = %@", 1))
         tableView.reloadData()
@@ -60,6 +52,7 @@ class NoteViewController: UIViewController {
     }
     
     @objc func pushDetailVC() {
+        let genreDetailVC = GenreDetailViewController()
         navigationController?.pushViewController(genreDetailVC, animated: true)
     }
 }
@@ -79,6 +72,7 @@ extension NoteViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let genre = gernes[indexPath.row]
+        let genreDetailVC = GenreDetailViewController()
         genreDetailVC.genre = genre
         navigationController?.pushViewController(genreDetailVC, animated: false)
     }

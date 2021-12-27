@@ -22,13 +22,14 @@ class NewNoteStep1ViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navSetLayout()
         setLayout()
-//        view.addSubview(searchHeaderView)
-//        searchHeaderView.setLayout()
         setTableView()
         setBinding()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,16 +104,27 @@ class NewNoteStep1ViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.becomeFirstResponder()
+        tableView.reloadData()
+
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         searchViewModel.getSearchData(query: searchText)
     }
-    
+
     func setBinding() {
         searchViewModel.apiResponse.bind(onNext: { [weak self]  in
             self?.tableView.reloadData()
         }).disposed(by: searchViewModel.disposeBag)
     }
+    
     
     
     @objc func backBTEvent() {
@@ -151,6 +163,7 @@ extension NewNoteStep1ViewController: UITableViewDelegate, UITableViewDataSource
         movie.actor = searchResult.actor ?? ""
         movie.director = searchResult.director ?? ""
         movie.releaseDate = searchResult.pubDate ?? ""
+        movie.link = searchResult.link ?? ""
         selectedMovie = movie
         
         confirmBT.isEnabled = true

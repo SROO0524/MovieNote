@@ -39,12 +39,16 @@ class GenreDetailViewController: UIViewController {
         movies = Array(genre!.movies)
         
         tableView.reloadData()
-        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
     
     func navSetLayout() {
-        navigationItem.largeTitleDisplayMode =  .never
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "chevron.backward"),

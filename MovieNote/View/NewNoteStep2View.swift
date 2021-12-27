@@ -10,7 +10,7 @@ import UIKit
 class NewNoteStep2View: UIView {
     
     let viewDate = UILabel()
-    let viewDateTextView = UITextView()
+    let viewDateBT = UIButton()
     
     let memoLabel = UILabel()
     let memoTextView = UITextView()
@@ -29,27 +29,31 @@ class NewNoteStep2View: UIView {
         viewDate.snp.makeConstraints { make in
             make.top.equalTo(self).offset(20 * superview!.frame.height / 568)
             make.leading.equalTo(self).offset(10)
+            make.width.equalTo(superview!.frame.width / 3)
         }
         
-        addSubview(viewDateTextView)
-        viewDateTextView.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
-        viewDateTextView.layer.cornerRadius = 5
-        viewDateTextView.clipsToBounds = true
-        viewDateTextView.layer.borderWidth = 1
-        viewDateTextView.layer.borderColor = Colors.mainCellColor?.cgColor
-        viewDateTextView.snp.makeConstraints { make in
-            make.top.equalTo(viewDate)
+        addSubview(viewDateBT)
+        viewDateBT.titleLabel?.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        viewDateBT.layer.cornerRadius = 5
+        viewDateBT.clipsToBounds = true
+        viewDateBT.layer.borderWidth = 1
+        viewDateBT.layer.borderColor = Colors.mainCellColor?.cgColor
+        viewDateBT.setTitle("날짜를 선택해주세요", for: .normal)
+        viewDateBT.setTitleColor(.black, for: .normal)
+        viewDateBT.backgroundColor = .white
+        viewDateBT.snp.makeConstraints { make in
             make.leading.equalTo(viewDate.snp.trailing).offset(10)
             make.trailing.equalTo(self).inset(10)
             make.centerY.equalTo(viewDate.snp.centerY)
             make.height.equalTo(40)
         }
         
+        
         addSubview(memoLabel)
         memoLabel.text = "메모"
         memoLabel.font = UIFont.boldSystemFont(ofSize: 16 * superview!.frame.height / 568)
         memoLabel.snp.makeConstraints { make in
-            make.top.equalTo(viewDateTextView.snp.bottom).offset(20 * superview!.frame.height / 568)
+            make.top.equalTo(viewDateBT.snp.bottom).offset(20 * superview!.frame.height / 568)
             make.leading.equalTo(viewDate)
         }
         
@@ -67,7 +71,7 @@ class NewNoteStep2View: UIView {
         
         addSubview(confirmBT)
         confirmBT.setTitle("다음", for: .normal)
-        confirmBT.backgroundColor = Colors.seletedColor
+        confirmBT.backgroundColor = Colors.mainCellColor
         confirmBT.setTitleColor(.white, for: .normal)
         confirmBT.layer.cornerRadius = 5
         confirmBT.clipsToBounds = true
@@ -77,7 +81,7 @@ class NewNoteStep2View: UIView {
             make.height.equalTo(50 * superview!.frame.height / 568)
             make.bottom.equalTo(self.snp.bottom).inset(10)
         }
-
+        
     }
-
+    
 }

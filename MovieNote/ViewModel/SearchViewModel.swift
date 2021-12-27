@@ -22,6 +22,7 @@ class SearchViewModel {
         let searchAPI = SearchAPI()
         searchAPI.search(query: query) { [weak self] (isSuccess, model) in
             if isSuccess {
+                self?.searchList = []
                 self?.searchModel = model as? SearchModel
                 self?.searchList.append(contentsOf: self?.searchModel?.items ?? [])
                 self?.totalElements = self?.searchModel?.total

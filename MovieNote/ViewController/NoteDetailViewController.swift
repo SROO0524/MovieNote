@@ -24,6 +24,9 @@ class NoteDetailViewController: UIViewController {
         navSetLayout()
         view.addSubview(movieInfoView)
         movieInfoView.setLayout(movie: movie!)
+        
+        let concern1Gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(goToWebView))
+        movieInfoView.addGestureRecognizer(concern1Gesture)
     }
     
     func navSetLayout() {
@@ -60,23 +63,18 @@ class NoteDetailViewController: UIViewController {
     }
     
     @objc func likeBTClicked(_ sender: UIButton) {
-        print("하트클릭")
-
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.tintColor = .gray
-        } else {
-            sender.isSelected = true
-            sender.tintColor = .red
-        }
-        
-        let movieObject = self.realm.objects(Movie.self).filter("title = %@", movie!.title)
+        let changedStatus = !movie!.like
+        sender.isSelected = changedStatus
+        sender.tintColor = changedStatus ? .red : .gray
 
         try! self.realm.write {
-            guard let first = movieObject.first else {return}
-            first.like = !first.like
-            movie?.like = sender.isSelected
+            movie?.like = changedStatus
         }
-        
+    }
+    
+    @objc func goToWebView() {
+        let webVC = WebviewViewController()
+        modalPresentationStyle = .currentContext
+        navigationController?.pushViewController(webVC, animated: true)
     }
 }

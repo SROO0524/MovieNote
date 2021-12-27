@@ -11,4 +11,5 @@ struct MovieStruct {
     var actor = ""
     var director = ""
     var releaseDate = ""
+    var link = ""
 }

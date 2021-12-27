@@ -15,6 +15,7 @@ class Movie: Object {
     @objc dynamic var director = ""
     @objc dynamic var actor = ""
     @objc dynamic var releaseDate = ""
+    @objc dynamic var link = ""
     @objc dynamic var like = false
     
     override static func primaryKey() -> String? {
