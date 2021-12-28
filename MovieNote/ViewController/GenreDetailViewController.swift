@@ -16,7 +16,6 @@ class GenreDetailViewController: UIViewController {
     let headerView = GenreHeaderView()
     let tableView = UITableView()
     let sortBottomUpVC = SortBottomUpViewController()
-    let noteVC = NoteViewController()
     let realm = try! Realm()
     var genre: Genre? = nil
     var movies: [Movie] = []
@@ -45,7 +44,7 @@ class GenreDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     
     func navSetLayout() {
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -81,10 +80,11 @@ class GenreDetailViewController: UIViewController {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 130 * view.frame.width / 320
+        
     }
     
     @objc func backBTEvent() {
-        navigationController?.popViewController(animated: false)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func addNote() {
@@ -96,7 +96,6 @@ class GenreDetailViewController: UIViewController {
     
     @objc func sortBTClicked() {
         print("영화순 정렬")
-                
         sortBottomUpVC.modalPresentationStyle = .overCurrentContext
         present(sortBottomUpVC, animated: true, completion: nil)
     }
@@ -129,6 +128,4 @@ extension GenreDetailViewController: UITableViewDelegate, UITableViewDataSource 
         noteDetailVC.movie = genre?.movies[indexPath.row]
         navigationController?.pushViewController(noteDetailVC, animated: true)
     }
-    
-    
 }

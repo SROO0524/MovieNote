@@ -26,23 +26,11 @@ class Commmon : NSObject {
         return dateFormatter.string(from: date)
     }
     
+    // 영화 이름 스트링 값 치환
     static func formateStringData(string: String) -> String {
         let titleResult = string.replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "<b>", with: "")
         return titleResult
     }
     
 
-}
-
-extension UIViewController {
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 영화 검색 상단 headerView 커스텀
 class SearchHeaderView: UIView {
 
     let searchLabel = UILabel()
@@ -14,8 +15,6 @@ class SearchHeaderView: UIView {
     let customView = UIView()
     
     func setLayout() {
-        
-        
         self.snp.makeConstraints { make in
             make.top.equalTo(superview!.safeAreaLayoutGuide)
             make.leading.trailing.equalTo(superview!.safeAreaLayoutGuide)

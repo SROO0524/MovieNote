@@ -23,7 +23,6 @@
 		D5BA516C27721BDC00C70313 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5BA516B27721BDB00C70313 /* Color.xcassets */; };
 		D5BA516E27721C8600C70313 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA516D27721C8600C70313 /* Colors.swift */; };
 		D5BA517027734EAA00C70313 /* NoteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA516F27734EAA00C70313 /* NoteListTableViewCell.swift */; };
-		D5BA51722773500D00C70313 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51712773500D00C70313 /* NoteListView.swift */; };
 		D5BA517427735CA000C70313 /* GenreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA517327735CA000C70313 /* GenreDetailViewController.swift */; };
 		D5BA517827736EC200C70313 /* GenreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA517727736EC200C70313 /* GenreHeaderView.swift */; };
 		D5BA517A2773734800C70313 /* GenreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51792773734800C70313 /* GenreListTableViewCell.swift */; };
@@ -44,7 +43,6 @@
 		D5BA51A227788C3500C70313 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A127788C3500C70313 /* SearchAPI.swift */; };
 		D5BA51A427789EEF00C70313 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A327789EEF00C70313 /* SearchViewModel.swift */; };
 		D5BA51A62778C6B000C70313 /* MovieStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A52778C6B000C70313 /* MovieStruct.swift */; };
-		D5BA51A8277950DA00C70313 /* DataEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A7277950DA00C70313 /* DataEmptyView.swift */; };
 		D5BA51AA277A175600C70313 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51A9277A175600C70313 /* WebView.swift */; };
 		D5BA51AC277A184B00C70313 /* WebviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA51AB277A184B00C70313 /* WebviewViewController.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +92,6 @@
 		D5BA516B27721BDB00C70313 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		D5BA516D27721C8600C70313 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D5BA516F27734EAA00C70313 /* NoteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListTableViewCell.swift; sourceTree = "<group>"; };
-		D5BA51712773500D00C70313 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		D5BA517327735CA000C70313 /* GenreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDetailViewController.swift; sourceTree = "<group>"; };
 		D5BA517727736EC200C70313 /* GenreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreHeaderView.swift; sourceTree = "<group>"; };
 		D5BA51792773734800C70313 /* GenreListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 		D5BA51A127788C3500C70313 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		D5BA51A327789EEF00C70313 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D5BA51A52778C6B000C70313 /* MovieStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStruct.swift; sourceTree = "<group>"; };
-		D5BA51A7277950DA00C70313 /* DataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEmptyView.swift; sourceTree = "<group>"; };
 		D5BA51A9277A175600C70313 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		D5BA51AB277A184B00C70313 /* WebviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewViewController.swift; sourceTree = "<group>"; };
 		D7E5F05D68EF805A327C3F79 /* Pods_MovieNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,12 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				D5BA5183277604AB00C70313 /* CustomCell */,
-				D5BA51712773500D00C70313 /* NoteListView.swift */,
 				D5BA51942776FBD900C70313 /* NewNoteStep2View.swift */,
 				D5BA518E2776D6B000C70313 /* SearchHeaderView.swift */,
 				D5BA518A2776C82400C70313 /* MoviewInfoView.swift */,
 				D5BA517727736EC200C70313 /* GenreHeaderView.swift */,
-				D5BA51A7277950DA00C70313 /* DataEmptyView.swift */,
 				D5BA51A9277A175600C70313 /* WebView.swift */,
 			);
 			path = View;
@@ -277,9 +271,9 @@
 		D5BA516627720E3000C70313 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D5BA51332772056D00C70313 /* SettingViewController.swift */,
-				D5BA516327720DBC00C70313 /* NoteViewController.swift */,
 				D5BA51692772119F00C70313 /* MainTabbarController.swift */,
+				D5BA516327720DBC00C70313 /* NoteViewController.swift */,
+				D5BA51332772056D00C70313 /* SettingViewController.swift */,
 				D5BA517327735CA000C70313 /* GenreDetailViewController.swift */,
 				D5BA517F2775C36C00C70313 /* NoteDetailViewController.swift */,
 				D5BA517B27749FD300C70313 /* SortBottomUpViewController.swift */,
@@ -570,9 +564,7 @@
 				D5BA51A62778C6B000C70313 /* MovieStruct.swift in Sources */,
 				D5BA51932776FB3200C70313 /* NewNoteStep2ViewController.swift in Sources */,
 				D5BA518F2776D6B000C70313 /* SearchHeaderView.swift in Sources */,
-				D5BA51A8277950DA00C70313 /* DataEmptyView.swift in Sources */,
 				D5BA51AA277A175600C70313 /* WebView.swift in Sources */,
-				D5BA51722773500D00C70313 /* NoteListView.swift in Sources */,
 				D5BA51342772056D00C70313 /* SettingViewController.swift in Sources */,
 				D5BA51AC277A184B00C70313 /* WebviewViewController.swift in Sources */,
 				D5BA516A2772119F00C70313 /* MainTabbarController.swift in Sources */,

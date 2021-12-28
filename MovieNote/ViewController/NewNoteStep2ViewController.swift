@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 
+// 영화 본 날짜/ 메모 기록 화면
 class NewNoteStep2ViewController: UIViewController, UITextViewDelegate {
     
     let newNoteStep2View = NewNoteStep2View()
@@ -133,6 +134,7 @@ class NewNoteStep2ViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // 완료 버튼 클릭시 화면 전환
     func popToFirstVC() {
         if let firstViewController = self.navigationController?.viewControllers[1] {
             self.navigationController?.popToViewController(firstViewController, animated: true)

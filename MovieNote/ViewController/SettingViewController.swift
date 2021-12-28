@@ -10,25 +10,19 @@ import RxCocoa
 import RxSwift
 import RealmSwift
 
-// 장르 관리
+// 장르 관리 화면
 class SettingViewController: UIViewController {
     
     let tableView = UITableView()
     let cellObservable = PublishSubject<UITableViewCell>()
     let disposeBag = DisposeBag()
-    var cellIndexPath : Int?
-    var cellStateDictionary : [Int:Bool]?
     let realm = try! Realm()
-//    let switchBT = UISwitch()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("😀realmURL\(Realm.Configuration.defaultConfiguration.fileURL)")
         setTableView()
-//        view.addSubview(switchBT)
-//        switchBT.snp.makeConstraints { make in
-//            make.center.equalTo(view.safeAreaLayoutGuide)
-//        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "plus"),
             style: .plain,
@@ -111,6 +105,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // 스위치 on/off 버튼
     @objc func isOn(_ sender: UISwitch) {
         let index = sender.tag
         let genre = realm.objects(Genre.self).filter("id = %@", index)

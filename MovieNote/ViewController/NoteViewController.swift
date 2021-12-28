@@ -10,29 +10,23 @@ import RealmSwift
 import RxSwift
 import RxCocoa
 
-// 나의 영화 기록
+// 나의 영화 장르 메인화면
 class NoteViewController: UIViewController {
-
+    
     let tableView = UITableView()
     var gernes : [Genre] = []
     let realm = try! Realm()
-    let genreObservable = PublishSubject<String>()
-    let disposeBag = DisposeBag()
-    let emptyView = DataEmptyView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         setTableview()
         tableView.delegate = self
         tableView.dataSource = self
-        view.addSubview(emptyView)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         tabBarController?.tabBar.isHidden = false

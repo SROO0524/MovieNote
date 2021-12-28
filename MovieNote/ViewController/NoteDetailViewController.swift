@@ -40,7 +40,7 @@ class NoteDetailViewController: UIViewController {
             target: self,
             action: #selector(backBTEvent)
         )
-
+        
         tabBarController?.tabBar.isHidden = true 
         
         let rightButton = UIBarButtonItem(customView: likeButton)
@@ -51,13 +51,13 @@ class NoteDetailViewController: UIViewController {
             
         } else {
             likeButton.tintColor = .gray
-        
+            
         }
         
         likeButton.addTarget(self, action: #selector(likeBTClicked(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = rightButton
     }
-        
+    
     @objc func backBTEvent() {
         navigationController?.popViewController(animated: false)
     }
@@ -66,14 +66,18 @@ class NoteDetailViewController: UIViewController {
         let changedStatus = !movie!.like
         sender.isSelected = changedStatus
         sender.tintColor = changedStatus ? .red : .gray
-
+        
         try! self.realm.write {
             movie?.like = changedStatus
         }
     }
     
     @objc func goToWebView() {
+        if (movie?.link == nil || movie?.link == "") {
+            return
+        }
         let webVC = WebviewViewController()
+        webVC.link = movie!.link
         modalPresentationStyle = .currentContext
         navigationController?.pushViewController(webVC, animated: true)
     }

@@ -8,19 +8,19 @@
 import UIKit
 import RealmSwift
 
+// 영화 정보 웹뷰
 class WebviewViewController: UIViewController {
     
     let webView = WebView()
-    var movie: Movie? = nil
-    let realm = try! Realm()
+    var link = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(webView)
         setLayout()
-
-        let request = URLRequest(url: URL(string: movie?.link ?? "")!)
+        
+        let request = URLRequest(url: URL(string: link)!)
         webView.webView.load(request)
     }
     

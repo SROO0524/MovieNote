@@ -26,8 +26,5 @@ class SearchAPI: NetWorkModel {
                 print("실패", response.error as Any)
             }
         }
-            
-        
     }
-
 }

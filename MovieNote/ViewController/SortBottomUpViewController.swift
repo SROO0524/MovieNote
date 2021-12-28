@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// 영화 기록 정렬 버튼 
 class SortBottomUpViewController: UIViewController {
     
     let bottomView = UIView()

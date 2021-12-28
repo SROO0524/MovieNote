@@ -7,8 +7,9 @@
 
 import UIKit
 
+// 탭바 설정
 class MainTabbarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
@@ -37,11 +38,12 @@ class MainTabbarController: UITabBarController {
     }
     
     func tabbarSet() {
-            viewControllers = [
-                createNavController(for: NoteViewController(), title: NSLocalizedString("나의 영화 노트", comment: ""), image: UIImage(named: "note.text")!),
-                createNavController(for: SettingViewController(), title: NSLocalizedString("장르 관리", comment: ""), image: UIImage(named: "gearshape.fill")!)
-            ]
-
+        viewControllers = [
+            createNavController(for: NoteViewController(), title: NSLocalizedString("나의 영화 노트", comment: ""), image: UIImage(named: "note.text")!),
+            createNavController(for: SettingViewController(), title: NSLocalizedString("장르 관리", comment: ""), image: UIImage(named: "gearshape.fill")!)
+        ]
+        tabBar.tintColor = Colors.seletedColor
+        
     }
 }
 

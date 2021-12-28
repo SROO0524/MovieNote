@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 영화 기록 리스트 상단 headerView 커스텀 
 class GenreHeaderView: UIView {
 
     let sortBT = UIButton()

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 영화 기록 커스텀 뷰
 class NewNoteStep2View: UIView {
     
     let viewDate = UILabel()
@@ -33,7 +34,7 @@ class NewNoteStep2View: UIView {
         }
         
         addSubview(viewDateBT)
-        viewDateBT.titleLabel?.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        viewDateBT.titleLabel?.font = UIFont.systemFont(ofSize: 10 * superview!.frame.height / 568)
         viewDateBT.layer.cornerRadius = 5
         viewDateBT.clipsToBounds = true
         viewDateBT.layer.borderWidth = 1
@@ -58,7 +59,7 @@ class NewNoteStep2View: UIView {
         }
         
         addSubview(memoTextView)
-        memoTextView.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        memoTextView.font = UIFont.systemFont(ofSize: 12 * superview!.frame.height / 568)
         memoTextView.layer.cornerRadius = 5
         memoTextView.clipsToBounds = true
         memoTextView.layer.borderWidth = 1

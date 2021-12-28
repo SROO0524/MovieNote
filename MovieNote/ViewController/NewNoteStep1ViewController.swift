@@ -8,11 +8,11 @@
 import UIKit
 import RealmSwift
 
+// 영화 검색 화면
 class NewNoteStep1ViewController: UIViewController, UISearchBarDelegate {
     
     let searchHeaderView = SearchHeaderView()
     let tableView = UITableView()
-    let searchData = 10
     let searchLabel = UILabel()
     let searchBar = UISearchBar()
     let confirmBT = UIButton()
@@ -89,8 +89,6 @@ class NewNoteStep1ViewController: UIViewController, UISearchBarDelegate {
         confirmBT.setTitle("다음", for: .normal)
         confirmBT.setTitleColor(.white, for: .normal)
         confirmBT.backgroundColor = Colors.mainCellColor
-        
-//        confirmBT.isEnabled = false
 
         confirmBT.layer.cornerRadius = 5
         confirmBT.clipsToBounds = true
@@ -124,8 +122,6 @@ class NewNoteStep1ViewController: UIViewController, UISearchBarDelegate {
             self?.tableView.reloadData()
         }).disposed(by: searchViewModel.disposeBag)
     }
-    
-    
     
     @objc func backBTEvent() {
         navigationController?.popViewController(animated: false)

@@ -16,7 +16,6 @@ class NetWorkModel {
         "X-Naver-Client-Id": "CL8FxWqGckBm4isPxeSE",
         "X-Naver-Client-Secret": "9_Q_ftV4oi"
     ]
-
 }
 
 

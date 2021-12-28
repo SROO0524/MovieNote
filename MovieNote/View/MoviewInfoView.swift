@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 영화기록 상세 커스텀 뷰 
 class MoviewInfoView: UIView {
     
     
@@ -41,14 +42,14 @@ class MoviewInfoView: UIView {
         
         containerView.addSubview(directorLabel)
         directorLabel.text = "2. 감독 : \(movie.director)"
-        directorLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        directorLabel.font = UIFont.systemFont(ofSize: 12 * superview!.frame.height / 568)
         directorLabel.snp.makeConstraints { make in
             make.center.equalTo(containerView)
         }
         
         containerView.addSubview(yearDateLabel)
         yearDateLabel.text = "1. 개봉년도 : \(movie.releaseDate)"
-        yearDateLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        yearDateLabel.font = UIFont.systemFont(ofSize: 12 * superview!.frame.height / 568)
         yearDateLabel.snp.makeConstraints { make in
             make.centerX.equalTo(containerView)
             make.bottom.equalTo(directorLabel.snp.bottom).inset(30)
@@ -56,7 +57,7 @@ class MoviewInfoView: UIView {
         
         containerView.addSubview(actorLabel)
         actorLabel.text = "3. 출현진: \(movie.actor)"
-        actorLabel.font = UIFont.systemFont(ofSize: 15 * superview!.frame.height / 568)
+        actorLabel.font = UIFont.systemFont(ofSize: 12 * superview!.frame.height / 568)
         actorLabel.snp.makeConstraints { make in
             make.top.equalTo(directorLabel.snp.bottom).offset(10)
             make.centerX.equalTo(containerView)
@@ -75,7 +76,7 @@ class MoviewInfoView: UIView {
         addSubview(dateLabel)
         let dateString = Commmon.getDateString(date: movie.watchedAt)
         dateLabel.text = dateString
-        dateLabel.font = UIFont.systemFont(ofSize: 10 * superview!.frame.height / 568)
+        dateLabel.font = UIFont.systemFont(ofSize: 12 * superview!.frame.height / 568)
         dateLabel.textColor = .gray
         dateLabel.snp.makeConstraints { make in
             make.trailing.equalTo(self).inset(10)
@@ -92,6 +93,7 @@ class MoviewInfoView: UIView {
 
         addSubview(memoTextView)
         memoTextView.layer.cornerRadius = 10
+        memoTextView.font = UIFont.systemFont(ofSize: 12)
         memoTextView.clipsToBounds = true
         memoTextView.layer.borderColor = Colors.mainCellColor?.cgColor
         memoTextView.layer.borderWidth = 1
