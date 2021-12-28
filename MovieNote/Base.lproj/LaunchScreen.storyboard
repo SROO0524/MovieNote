@@ -26,8 +26,11 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Movie Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cU-zM-o8y">
-                                <rect key="frame" x="100" y="526" width="214" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <rect key="frame" x="100" y="526" width="214" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="Wh2-6R-MRn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,11 +38,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="selectedcolor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5cU-zM-o8y" secondAttribute="trailing" constant="100" id="7OC-2W-nxk"/>
-                            <constraint firstItem="5cU-zM-o8y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Bqz-tG-r7V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5cU-zM-o8y" secondAttribute="trailing" constant="100" id="9r0-af-tjk"/>
                             <constraint firstItem="iY2-7n-XW6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="K3h-nD-11i"/>
                             <constraint firstItem="5cU-zM-o8y" firstAttribute="top" secondItem="iY2-7n-XW6" secondAttribute="bottom" constant="7.5" id="bI2-7w-kl5"/>
                             <constraint firstItem="iY2-7n-XW6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="guM-EH-nnP"/>
+                            <constraint firstItem="5cU-zM-o8y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="vSZ-PB-jtw"/>
                         </constraints>
                     </view>
                 </viewController>
